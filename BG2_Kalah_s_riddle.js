@@ -39,6 +39,13 @@ half the sum of their present age. // princess_past_age = (princess_present_age 
 */
 
 function checkRiddleAns(prince_present_age, princess_present_age) {
+     // The following covers Option 4 - If both are equal age then only one number is passed as an argument
+     if(prince_present_age === undefined) {
+        prince_present_age = princess_present_age;
+     }
+     else if(princess_present_age === undefined) {
+       princess_present_age = prince_present_age;
+     }
      var AGE_DIFF = prince_present_age - princess_present_age; // if negative then prince is younger
      var princessCalculatedAge = (2 * (((princess_present_age + prince_present_age) / 2) + AGE_DIFF)) + AGE_DIFF;
      var princeCalculatedAge = princessCalculatedAge + AGE_DIFF;
@@ -49,3 +56,9 @@ function checkRiddleAns(prince_present_age, princess_present_age) {
      else
        return false;
 }
+
+checkRiddleAns(20, 30); // false
+checkRiddleAns(40, 30); // false
+checkRiddleAns(30, 40); // true
+checkRiddleAns(30, 20); // false
+checkRiddleAns(20); // false
